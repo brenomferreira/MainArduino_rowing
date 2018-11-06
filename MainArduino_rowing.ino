@@ -44,7 +44,7 @@
     pinMode (LED_Direito, OUTPUT);  // Sets pin as OUTPUT.
     pinMode (LED_Esquerdo, OUTPUT); // Sets pin as OUTPUT.
   
-    Serial.begin (115200);
+    Serial.begin (9600);
     Serial.flush (); // Clear receive buffer.
   
     inicializacao ();
@@ -133,7 +133,7 @@
     int mode = 2;
     int pw = 200;
   
-    // bool conexao = false;
+    bool conexao = false;
   
   
     // para a funcao
@@ -151,20 +151,20 @@
     lcd.setCursor (0, 0);
     lcd.print ("   Conectando...");
   
-    // conexao = false;
-    // while (conexao == false){
-    //   if (Serial.available ()){
-    //    flag = Serial.readString ();
-    //    if (flag.equals ("a")){
-    //      conexao = true;
-    //    }
-    //  }
-    // }
+     //conexao = false;
+     while (conexao == false){
+       if (Serial.available ()){
+        flag = Serial.readString ();
+        if (flag.equals ("a")){
+          conexao = true;
+        }
+      }
+     }
   
-    // Serial.write (1);
-    // lcd.clear ();
-    // lcd.print ("Conectado!");
-    // delay (1000);
+     Serial.write (1);
+     lcd.clear ();
+     lcd.print ("Conectado!");
+     delay (1000);
   
     // pegando parametros de quantidade de canais, corrente e largura de pulso (pw) ////////////////////////
   
