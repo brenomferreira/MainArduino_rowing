@@ -42,7 +42,7 @@ Obs: não importa a ordem/posição dos dispositivos, a rotina desenvolvida para
 ## Passos
 `O dispositivo Handle dispõe de 3 botões:`
 
->|Botões|Modo SET|Modo RUN|
+|Botões|Modo SET|Modo RUN|
 |:--|:--|:--|
 |Direito [verde]|Aumenta valor do parâmetro|Extensão da Perna|
 |Esquerdo [verde]|Diminui o valor do parâmetro|Flexão da perna|
@@ -50,13 +50,13 @@ Obs: não importa a ordem/posição dos dispositivos, a rotina desenvolvida para
 
 
 
->>1. Aguardar a conexão de portas e indicação no display para configuração dos parâmetros.
+1. Aguardar a conexão de portas e indicação no display para configuração dos parâmetros.
 1. Inserir parâmetros:
 	1. inserir a quantidades de canais (dois ou quatro).
 	1. inserir valor(es) de amplitude de corrente.
 	1. inserir valor da Largura de pulso.
 	1. inserir valor da frequência.
 
->>1. Aguardar o envio de parâmetros para o Eletroestimulador.
+1. Aguardar o envio de parâmetros para o Eletroestimulador.
 1. Execução do treino.
 
