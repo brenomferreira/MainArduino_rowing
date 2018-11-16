@@ -9,13 +9,11 @@
 
 ### Arquivos
 
-#### MainStim.py
+>`MainStim.py`
+>>_Script_ a ser executado no **Raspberry**
 
->_Script_ a ser executado no **Raspberry**
-
-##### stimulator.py
-
->Funções utilizadas no `ManStim.py`	
+>`stimulator.py`
+>>Funções utilizadas no `ManStim.py`	
 
 exemplo: 
 ```python
@@ -26,17 +24,14 @@ import time
 import io
 ``` 
 
-#### MainArduino_rowing.ino
-
->_Firmware_ Arduino NANO embarcado. `Comunicação SERIAL, informações no Display e comandos por botões pushbutton`
+>`MainArduino_rowing.ino`
+>>_Firmware_ Arduino NANO embarcado. `Comunicação SERIAL, informações no Display e comandos por botões pushbutton`
 
 ---
 
-#Modo de Utilização 
+# Modo de Utilização 
 
-> Atualmente o dispositivo está em fases de teste, por isso o sistema ainda funciona dependente de periféricos[^1] no Raspberry.
-
-[^1]: Monitor, teclado e mouse.
+> Atualmente o dispositivo está em fases de teste, por isso o sistema ainda funciona dependente de periféricos (Monitor, teclado e mouse) no Raspberry.
 
 ## Conexão
 >* Conectar periféricos[^1], Eletroestimulador e Handle nas portas USB do Raspberry
@@ -44,7 +39,7 @@ Obs: não importa a ordem/posição dos dispositivos, a rotina desenvolvida para
 *  Conectar **Raspberry** na fonte **DC [5 V, 2 A]** (Necessita de uma boa fonte para alimentar o consumo energético do _Handle_)
 * Entrar no sistema operacional e executar o arquivo `MainStim.py`
 
-##Passos
+## Passos
 `O dispositivo Handle dispõe de 3 botões:`
 
 >|Botões|Modo SET|Modo RUN|
@@ -58,13 +53,10 @@ Obs: não importa a ordem/posição dos dispositivos, a rotina desenvolvida para
 >>1. Aguardar a conexão de portas e indicação no display para configuração dos parâmetros.
 1. Inserir parâmetros:
 	1. inserir a quantidades de canais (dois ou quatro).
-	1. inserir valor(es) de amplitude de corrente [^2].
+	1. inserir valor(es) de amplitude de corrente.
 	1. inserir valor da Largura de pulso.
 	1. inserir valor da frequência.
 
 >>1. Aguardar o envio de parâmetros para o Eletroestimulador.
 1. Execução do treino.
 
-[^2]: 
-Se escolha de canal = 2: Configuração dos canais 1 e 2.
-Se escolha de canal  = 4: configuração dos canais 1 e 2, depois configuração de canais 3 e 4.# MainArduino_rowing
