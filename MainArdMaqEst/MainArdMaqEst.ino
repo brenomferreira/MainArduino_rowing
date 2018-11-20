@@ -16,7 +16,7 @@ int corrente_CH34 = 50;
 int corrente_CH56 = 40;
 int corrente_CH78 = 50;
 int freq = 50;
-int mode = 0;
+int mode = 2;
 bool stim = true;
 bool aux_CH12 = false;
 bool aux_CH34 = false;
@@ -70,7 +70,7 @@ void loop()
     // chama a função apontada pelo ponteiro de função (logo, chama o estado corrente)
   }
   system("PAUSE");
-  return 0;
+  //return 0;
 }
 
 void StateConect(void)
@@ -105,32 +105,32 @@ void StateSetCh(void)
   lcd.clear();
   lcd.print(text);
   variavel = mode;
-  passo = 1;
+  passo = 2;
   unidade = "";
   print = false;
   mode = func_set_parametro(variavel, passo, text, unidade, print);
-  if (mode == 0)
+  if (mode == 4)
   {
     lcd.setCursor(0, 1);
     lcd.print("Extensao+flexao");
     channels = B11110000;
   }
   else
-    if (mode == 1)
+    if (mode == 2)
     {
       lcd.setCursor(0, 1);
       lcd.print("Extensao       ");
       channels = B11000000;
     }
   else
-    if (mode == 2)
+    if (mode == 0)
     {
       lcd.setCursor(0, 1);
       lcd.print("         flexao");
       channels = B00110000;
     }
   else
-    mode = 0;
+    mode = 2;
   delay(100);
   if (digitalRead(acaba) == LOW)
   {
@@ -326,7 +326,7 @@ void Send(void)
   Serial.print("f"); // marcador de frequecia
   func_dim_string_to_Stim(freq);
   Serial.print("m"); // marcador do modo
-  Serial.print(channels, BIN);
+  func_dim_string_to_Stim(mode);
   lcd.clear();
   lcd.print("Enviando");
   delay(3000);
