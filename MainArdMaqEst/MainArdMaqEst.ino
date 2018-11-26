@@ -29,21 +29,24 @@ bool print;
 byte channels = B00000000;
 byte set_channels = B00000000;
 // B00000000 = Estado Inicial
-// B00000011 = -
-// B00001100 = -
-// B00001111 = -
-// B00110000 = Flexão
-// B00110011 = (Flexão & Ref_Flex)
+// B00000011 = Extensão 
+// B00001100 = Flexão
+// B00001111 = Extensão + Flexão
+// B00110000 = -
+// B00110011 = (Extensão & Aux_Ext)
 // B00111100 = -
-// B00111111 = -
-// B11000000 = Extensão
+// B00111111 = (Extensão & Aux_Ext) + Flexão
+// B11000000 = -
 // B11000011 = -
-// B11001100 = (Extensão & Ref_Ext)
-// B11001111 = -
-// B11110000 = Extensão + Flexão
-// B11110011 = Extensao + (Flexão & Ref_Flex)
-// B11111100 = (Extensão & Ref_Ext) + Flexão
-// B11111111 = (Extensão & Ref_Ext) + (Flexão & Ref_Flex)
+// B11001100 = (Flexão & Aux_Flex)
+// B11001111 = Extensao + (Flexão & Aux_Flex)
+// B11110000 = -
+// B11110011 = -
+// B11111100 = -
+// B11111111 = (Extensão & Aux_Ext) + (Flexão & Aux_Flex)
+
+
+
 void setup()
 {
   // put your setup code here, to run once:
@@ -113,21 +116,21 @@ void StateSetCh(void)
   {
     lcd.setCursor(0, 1);
     lcd.print("Extensao+flexao");
-    channels = B11110000;
+    channels = B00001111;
   }
   else
     if (mode == 2)
     {
       lcd.setCursor(0, 1);
       lcd.print("Extensao       ");
-      channels = B11000000;
+      channels = B00000011;
     }
   else
     if (mode == 0)
     {
       lcd.setCursor(0, 1);
       lcd.print("         flexao");
-      channels = B00110000;
+      channels = B00001100;
     }
   else
     mode = 2;
@@ -165,7 +168,7 @@ void SetAuxCH12(void)
     aux_CH12 = true;
     lcd.setCursor(0, 1);
     lcd.print("Sim, CH 5/6");
-    set_channels = B00001100;
+    set_channels = B00110000;
     delay(100);
   }
   if (digitalRead(acaba) == LOW)
@@ -202,7 +205,7 @@ void SetAuxCH34(void)
     aux_CH34 = true;
     lcd.setCursor(0, 1);
     lcd.print("Sim, CH 7/8");
-    set_channels = B00000011;
+    set_channels = B11000000;
     delay(100);
   }
   if (digitalRead(acaba) == LOW)
@@ -230,7 +233,7 @@ void StateSetAmp(void)
       delay(100);
     }
   }
-  if ((B00001100 & channels) > 0)
+  if ((B00110000 & channels) > 0)
   {
     digitalWrite(acaba, HIGH);
     delay(250);
@@ -246,7 +249,7 @@ void StateSetAmp(void)
       delay(100);
     }
   }
-  if ((B00110000 & channels) > 0)
+  if ((B00001100 & channels) > 0)
   {
     digitalWrite(acaba, HIGH);
     delay(250);
@@ -261,7 +264,7 @@ void StateSetAmp(void)
       delay(100);
     }
   }
-  if ((B00000011 & channels) > 0)
+  if ((B11000000 & channels) > 0)
   {
     digitalWrite(acaba, HIGH);
     delay(250);
